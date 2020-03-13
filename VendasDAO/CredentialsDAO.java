@@ -19,7 +19,7 @@ public class CredentialsDAO {
     
     public void TableCredentials(GenericAttributes GA) {
         try {
-            FileWriter fw = new FileWriter("C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Credencias.txt", true);
+            FileWriter fw = new FileWriter("..\\VendasDAO\\Credencias.txt", true);
             PrintWriter pw = new PrintWriter(fw);
             pw.println(GA.getName());
             pw.println(GA.getTipoFuncionario());
@@ -35,7 +35,7 @@ public class CredentialsDAO {
 
     public void ReadCredentials(String name, String password) {
         try {
-            String path = "C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Credencias.txt";
+            String path = "..\\VendasDAO\\Credencias.txt";
             Scanner scan = new Scanner(new File(path));
             List<String> Credentials = new ArrayList<String>();
             List<String> data = new ArrayList<String>();

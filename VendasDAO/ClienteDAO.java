@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 import VendasAttributes.ClienteAttributes;
-import VendasAttributes.GenericAttributes;
+
 
 /**
  * ClienteDAO
@@ -17,7 +19,7 @@ public class ClienteDAO {
 
     public void TableClientes(ClienteAttributes CA) {
         try {
-            FileWriter fw = new FileWriter("C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Clientes.txt", true);
+            FileWriter fw = new FileWriter("..\\VendasDAO\\Clientes.txt", true);
             PrintWriter pw = new PrintWriter(fw);
             pw.println(CA.getNome());
             pw.println(CA.getBairro());
@@ -35,7 +37,7 @@ public class ClienteDAO {
 
     public Boolean ReadClientes(String name) {
         try {
-            String path = "C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Clientes.txt";
+            String path = "..\\VendasDAO\\Clientes.txt";
             Scanner scan = new Scanner(new File(path));
             List<String> Clientes = new ArrayList<String>();
             while (scan.hasNextLine()) {
@@ -55,7 +57,7 @@ public class ClienteDAO {
 
     public Boolean ReadClientes(Integer telefone) {
         try {
-            String path = "C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Clientes.txt";
+            String path = "..\\VendasDAO\\Clientes.txt";
             Scanner scan = new Scanner(new File(path));
             List<String> Clientes = new ArrayList<String>();
             while (scan.hasNextLine()) {
@@ -71,5 +73,20 @@ public class ClienteDAO {
             System.out.println(e);
         }
         return false;
+    }
+    
+    public ArrayList<String> ReadClientes() {
+        try {
+            String path = "..\\VendasDAO\\Clientes.txt";
+            Scanner scan = new Scanner(new File(path));
+            ArrayList<String> Clientes = new ArrayList<String>();
+            while (scan.hasNextLine()) {
+                Clientes.add(scan.nextLine());
+            }
+           return Clientes;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 }

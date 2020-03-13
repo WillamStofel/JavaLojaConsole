@@ -28,7 +28,7 @@ public class HomeVendas {
                 System.out.println("4-) Cadastrar funcionário(a).");
                 resp = scan.nextLine();
             } while (resp.compareTo("1") != 0 && resp.compareTo("2") != 0 && resp.compareTo("3") != 0
-                    && resp.compareTo("4") != 0);
+                    && resp.compareTo("4") != 0 && resp.compareTo("0") != 0);
         } else {
             do {
                 Vendas.Clear();
@@ -40,7 +40,7 @@ public class HomeVendas {
                 System.out.println("2-) Cadastrar Pedidos.");
                 System.out.println("3-) Cadastrar Cliente.");
                 resp = scan.nextLine();
-            } while (resp.compareTo("1") == 0 && resp.compareTo("2") == 0 && resp.compareTo("3") != 0);
+            } while (resp.compareTo("1") == 0 && resp.compareTo("2") == 0 && resp.compareTo("3") != 0 && resp.compareTo("0") != 0);
         }
         Menu(resp);
         home(data);

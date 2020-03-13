@@ -18,9 +18,9 @@ import VendasDAO.ClienteDAO;
 public class CadastraCliente {
 
     public void CriaArquivo() {
-        Path path = Paths.get("C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Clientes.txt");
+        Path path = Paths.get("..\\VendasDAO\\Clientes.txt");
         if (Files.notExists(path)) {
-            File file = new File("C:\\Users\\willi\\git\\Vendas\\VendasDAO\\Clientes.txt");
+            File file = new File("..\\VendasDAO\\Clientes.txt");
             try {
                 FileWriter fw = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fw);
@@ -60,14 +60,20 @@ public class CadastraCliente {
             try {
                 System.out.println("Digite o número de telefone celular/residencial do Cliente: ");
                 telefone = scan.nextInt();
-                ValidaCampos(telefone);
+                telefone = ValidaCampos(telefone);
             } catch (Exception e) {
                 System.out.println("Digite apenas números sem '-', '/' ou qualquer outro caracter que não seja número."
                         + "Exception: " + e);
             }
         } while (cliente.setTelefone(telefone) == false);
-        ClienteDAO DB = new ClienteDAO();
-        DB.TableClientes(cliente);
+        try {
+            ClienteDAO DB = new ClienteDAO();
+            DB.TableClientes(cliente);
+            System.out.println("Cliente cadastrado com sucesso !!!");            
+            Thread.sleep(3000);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     // Esse método é para buscar se no banco existe o mesmo nome.
@@ -86,8 +92,9 @@ public class CadastraCliente {
         Boolean resp = ClientesDB.ReadClientes(telefone);
         if (resp == true)
             return telefone;
-        else
-            return 0;
+        else {
+            return telefone = 0;
+        }
 
     }
 }
