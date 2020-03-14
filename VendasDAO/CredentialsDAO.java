@@ -44,12 +44,12 @@ public class CredentialsDAO {
             }
 
             int position = 0;
-
-            if (name.contains("admin") && password.contains("admin"))
+            
+            if (name.compareTo("admin")  == 0 && password.compareTo("admin") == 0)
                 position = 2;
             else {
                 for (int i = 0; i < Credentials.size(); i++) {
-                    if (Credentials.get(i).contains(name)) {
+                    if (Credentials.get(i).compareTo(name) == 0) {
                         position = i;
                         break;
                     }
@@ -61,7 +61,7 @@ public class CredentialsDAO {
                     String value = Credentials.get(x);
                     dados.add(value);
                 }
-                if (dados.get(3).contains(password)) {
+                if (dados.get(3).compareTo(password) == 0) {
                     System.out.println("Usuário e senha corretos ! ");
                     Thread.sleep(3000);
                     HomeVendas homeVendas = new HomeVendas();

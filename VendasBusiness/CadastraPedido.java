@@ -7,8 +7,6 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -43,15 +41,15 @@ public class CadastraPedido {
         Vendas.Clear();
         Scanner scan = new Scanner(System.in);
         PedidoAttributes pedidos = new PedidoAttributes();
-        DateFormat data,data2;
+        String h;
         Integer IdPedido = 0, Quantidade = 0;
         PedidoVendas Ivendas = new PedidoVendas();
         ArrayList<String> cliente = Ivendas.Cliente();
         ArrayList<String> produto = Ivendas.Produto();
-        
+
         try {
             PedidosDAO p = new PedidosDAO();
-           IdPedido = p.ReadPedidos(); 
+            IdPedido = p.ReadPedidos();
             pedidos.setIdPedido(IdPedido);
         } catch (Exception e) {
             System.out.println(e);
@@ -66,11 +64,20 @@ public class CadastraPedido {
             }
         } while (pedidos.setQuantidade(Quantidade) == false);
         try {
-            
-            data = DateFormat.getDateInstance(DateFormat.SHORT);
-             data2 = DateFormat.getDateInstance(DateFormat.HOUR_OF_DAY0_FIELD);
-            pedidos.setHorario(data2);
-            pedidos.setDate(data);
+
+            Calendar c1 = Calendar.getInstance();
+            int year = c1.get(Calendar.YEAR);
+            int month = c1.get(Calendar.MONTH)+1;
+            int day = c1.get(Calendar.DAY_OF_MONTH);
+            String date = Integer.toString(day) + "/" +Integer.toString(month) +"/" + Integer.toString(year);
+            int hour = c1.get(Calendar.HOUR_OF_DAY);
+            int minutes = c1.get(Calendar.MINUTE);
+            if(minutes < 10)
+             h = Integer.toString(hour) + ":" + "0" +Integer.toString(minutes);
+            else
+             h = Integer.toString(hour) + ":" +Integer.toString(minutes);
+            pedidos.setHorario(h);
+            pedidos.setDate(date);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -78,14 +85,12 @@ public class CadastraPedido {
 
         try {
             PedidosDAO DB = new PedidosDAO();
-            DB.TablePedidos(pedidos, credencias,cliente,produto);
+            DB.TablePedidos(pedidos, credencias, cliente, produto);
             System.out.println("Pedido cadastrado com sucesso !!!");
             Thread.sleep(3000);
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-
- 
 
 }

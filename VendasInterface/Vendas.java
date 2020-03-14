@@ -1,9 +1,6 @@
 package VendasInterface;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 import VendasBusiness.CadastraCredenciais;
@@ -31,11 +28,6 @@ public class Vendas {
         String answer;
         do {
             Clear();
-            Calendar c = Calendar.getInstance();
-            Date data =  c.getTime();
-            DateFormat f =  DateFormat.getDateInstance(DateFormat.SHORT);
-            System.out.println(f.format(data));
-        
             System.out.println("Seja bem vindo ao sistema de vendas !");
             System.out.println("Escolha uma das opções a seguir: \n\n");
             System.out.println("1-) Entrar como minhas credencias no sistema.");
@@ -65,28 +57,28 @@ public class Vendas {
     }
 
     private static void Listapedidos(ArrayList<String> ped) {
-        if (ped != null && ped.size() > 0 ) {
-            for (int i = 0; i < ped.size(); i+=16) {
+        if (ped != null && ped.size() > 0) {
+            for (int i = 0; i < ped.size(); i += 16) {
                 if (i + 15 < ped.size())
                     System.out.println("\n Número do pedido: " + ped.get(i) + "\n Quantidade: " + ped.get(i + 1)
-                            + "\n Data: " + ped.get(i + 2) + "\n horário: " + ped.get(i + 3) + "\n Atendente: " + ped.get(i + 4)
-                            + "\n Cargo do Atendente: " + ped.get(i + 5) + "\n Nome do cliente: " + ped.get(i + 6)
-                            + "\n Bairro: " + ped.get(i + 7) + "\n Rua: " + ped.get(i + 8) + "\n Cidade: " + ped.get(i + 9)
-                            + "\n Telefone: " + ped.get(i + 10) + "\n Descrição Produto: " + ped.get(i + 11) + "\n Fornecedor: "
-                            + ped.get(i + 12) + "\n Unidade: " + ped.get(i + 13) + "\n Valor do produto: " + ped.get(i + 14)
+                            + "\n Data: " + ped.get(i + 2) + "\n horário: " + ped.get(i + 3) + "\n Atendente: "
+                            + ped.get(i + 4) + "\n Cargo do Atendente: " + ped.get(i + 5) + "\n Nome do cliente: "
+                            + ped.get(i + 6) + "\n Bairro: " + ped.get(i + 7) + "\n Rua: " + ped.get(i + 8)
+                            + "\n Cidade: " + ped.get(i + 9) + "\n Telefone: " + ped.get(i + 10)
+                            + "\n Descrição Produto: " + ped.get(i + 11) + "\n Fornecedor: " + ped.get(i + 12)
+                            + "\n Unidade: " + ped.get(i + 13) + "\n Valor do produto: " + ped.get(i + 14)
                             + "\n Categoria: " + ped.get(i + 15));
             }
 
         } else {
             try {
-                System.out.println("Não existem pedidos realizados !");    
-                System.out.println("\n\n\n ");    
+                System.out.println("Não existem pedidos realizados !");
+                System.out.println("\n\n\n ");
                 Thread.sleep(3000);
             } catch (Exception e) {
-                
+
             }
-            
-            
+
         }
     }
 

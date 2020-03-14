@@ -1,1 +1,3 @@
-1|1|java.text.SimpleDateFormat@574e3bf9|java.text.SimpleDateFormat@574e3bf9|Administrador|admin|william|orquideas|baffin|sao bernardo do campo |314151613|notebook|lenovo|UN|2300,00|eletronicos
+1|1|14/3/2020|12:49|William|Vendedor|jose|vila vitoria|vinte de agosto|sao bernardo do campo|40028922|celular|xiaomi|UN|900,00|eletronico
+2|1|14/3/2020|12:50|William|Vendedor|william|orquideas|baffin|sao bernardo do campo |314151613|notebook|lenovo|UN|2300,00|eletronicos
+3|1|14/3/2020|12:50|William|Vendedor|ana|nova petropolis|oliveira|sao bernardo do campo|955554444|mi band 4|xiaomi|KG|130,00|eletronicos
