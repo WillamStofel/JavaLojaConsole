@@ -20,9 +20,9 @@ import VendasDAO.CredentialsDAO;
 public class CadastraCredenciais {
 
     public void CriaArquivo() {
-        Path path = Paths.get("..\\VendasDAO\\Credencias.txt");
+        Path path = Paths.get("..\\Vendas\\VendasDAO\\Credencias.txt");
         if (Files.notExists(path)) {
-            File file = new File("..\\VendasDAO\\Credencias.txt");
+            File file = new File("..\\Vendas\\VendasDAO\\Credencias.txt");
             try {
                 FileWriter fw = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fw);
@@ -42,7 +42,7 @@ public class CadastraCredenciais {
     // caso já exista retorna para digitar novamente um novo login.
     private String ValidaLogin(String name) {
         int UsuarioExiste = 0;
-        String path = "..\\VendasDAO\\Credencias.txt";
+        String path = "..\\Vendas\\VendasDAO\\Credencias.txt";
         try {
             Scanner scan = new Scanner(new File(path));
             List<String> lista = new ArrayList<String>();

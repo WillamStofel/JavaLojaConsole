@@ -1,5 +1,4 @@
 package VendasInterface;
-
 import java.util.Scanner;
 
 import VendasDAO.CredentialsDAO;

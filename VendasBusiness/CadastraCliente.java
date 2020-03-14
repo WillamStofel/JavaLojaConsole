@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import VendasAttributes.ClienteAttributes;
@@ -18,9 +19,9 @@ import VendasDAO.ClienteDAO;
 public class CadastraCliente {
 
     public void CriaArquivo() {
-        Path path = Paths.get("..\\VendasDAO\\Clientes.txt");
+        Path path = Paths.get("..\\Vendas\\VendasDAO\\Clientes.txt");
         if (Files.notExists(path)) {
-            File file = new File("..\\VendasDAO\\Clientes.txt");
+            File file = new File("..\\Vendas\\VendasDAO\\Clientes.txt");
             try {
                 FileWriter fw = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fw);
@@ -33,12 +34,13 @@ public class CadastraCliente {
         }
     }
 
-    public void CadastroCliente() {
+    public ArrayList<String> CadastroCliente() {
         CriaArquivo();
         Scanner scan = new Scanner(System.in);
         ClienteAttributes cliente = new ClienteAttributes();
         String nome, bairro, rua, cidade;
         Integer telefone = 0;
+        ArrayList<String> c = new ArrayList<String>();
         do {
             System.out.println("Digite o nome do Cliente: ");
             nome = scan.nextLine();
@@ -69,11 +71,17 @@ public class CadastraCliente {
         try {
             ClienteDAO DB = new ClienteDAO();
             DB.TableClientes(cliente);
-            System.out.println("Cliente cadastrado com sucesso !!!");            
+            c.add(nome);
+            c.add(bairro);
+            c.add(rua);
+            c.add(cidade);
+            c.add(telefone.toString());
+            System.out.println("Cliente cadastrado com sucesso !!!");     
             Thread.sleep(3000);
         } catch (Exception e) {
             System.out.println(e);
         }
+        return c;
     }
 
     // Esse método é para buscar se no banco existe o mesmo nome.

@@ -1,0 +1,1 @@
+1|1|java.text.SimpleDateFormat@574e3bf9|java.text.SimpleDateFormat@574e3bf9|Administrador|admin|william|orquideas|baffin|sao bernardo do campo |314151613|notebook|lenovo|UN|2300,00|eletronicos

@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import VendasAttributes.ProdutosAttributes;
@@ -19,9 +20,9 @@ import VendasInterface.Vendas;
 public class CadastraProdutos {
 
     public void CriaArquivo() {
-        Path path = Paths.get("..\\VendasDAO\\Produtos.txt");
+        Path path = Paths.get("..\\Vendas\\VendasDAO\\Produtos.txt");
         if (Files.notExists(path)) {
-            File file = new File("..\\VendasDAO\\Produtos.txt");
+            File file = new File("..\\Vendas\\VendasDAO\\Produtos.txt");
             try {
                 FileWriter fw = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fw);
@@ -34,12 +35,13 @@ public class CadastraProdutos {
         }
     }
 
-    public void CadastroCliente() {
+    public ArrayList<String> CadastroProduto() {
         CriaArquivo();
         Vendas.Clear();
         Scanner scan = new Scanner(System.in);
         ProdutosAttributes products = new ProdutosAttributes();
         String Descricao, fornecedor, unidade, valor, categoria;
+        ArrayList<String> p = new ArrayList<String>();
 
         do {
             System.out.println("Digite a descrição do produto: ");
@@ -71,9 +73,15 @@ public class CadastraProdutos {
             DB.TableProdutos(products);
             System.out.println("Produto cadastrado com sucesso !!!");
             Thread.sleep(3000);
+            p.add(Descricao);
+            p.add(fornecedor);
+            p.add(unidade);
+            p.add(valor);
+            p.add(categoria);
         } catch (Exception e) {
             System.out.println(e);
         }
+        return p;
     }
 
     public String ValidaCampos(String descricao) {

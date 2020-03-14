@@ -19,7 +19,7 @@ public class ClienteDAO {
 
     public void TableClientes(ClienteAttributes CA) {
         try {
-            FileWriter fw = new FileWriter("..\\VendasDAO\\Clientes.txt", true);
+            FileWriter fw = new FileWriter("..\\Vendas\\VendasDAO\\Clientes.txt", true);
             PrintWriter pw = new PrintWriter(fw);
             pw.println(CA.getNome());
             pw.println(CA.getBairro());
@@ -37,7 +37,7 @@ public class ClienteDAO {
 
     public Boolean ReadClientes(String name) {
         try {
-            String path = "..\\VendasDAO\\Clientes.txt";
+            String path = "..\\Vendas\\VendasDAO\\Clientes.txt";
             Scanner scan = new Scanner(new File(path));
             List<String> Clientes = new ArrayList<String>();
             while (scan.hasNextLine()) {
@@ -57,7 +57,7 @@ public class ClienteDAO {
 
     public Boolean ReadClientes(Integer telefone) {
         try {
-            String path = "..\\VendasDAO\\Clientes.txt";
+            String path = "..\\Vendas\\VendasDAO\\Clientes.txt";
             Scanner scan = new Scanner(new File(path));
             List<String> Clientes = new ArrayList<String>();
             while (scan.hasNextLine()) {
@@ -77,7 +77,7 @@ public class ClienteDAO {
     
     public ArrayList<String> ReadClientes() {
         try {
-            String path = "..\\VendasDAO\\Clientes.txt";
+            String path = "..\\Vendas\\VendasDAO\\Clientes.txt";
             Scanner scan = new Scanner(new File(path));
             ArrayList<String> Clientes = new ArrayList<String>();
             while (scan.hasNextLine()) {

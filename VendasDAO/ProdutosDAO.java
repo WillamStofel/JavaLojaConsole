@@ -16,7 +16,7 @@ public class ProdutosDAO {
 
     public void TableProdutos(ProdutosAttributes PA) {
         try {
-            FileWriter fw = new FileWriter("..\\VendasDAO\\Produtos.txt", true);
+            FileWriter fw = new FileWriter("..\\Vendas\\VendasDAO\\Produtos.txt", true);
             PrintWriter pw = new PrintWriter(fw);
             pw.println(PA.getDescricao());
             pw.println(PA.getFornecedor());
@@ -34,7 +34,7 @@ public class ProdutosDAO {
 
     public Boolean ReadProdutos(String name) {
         try {
-            String path = "..\\VendasDAO\\Produtos.txt";
+            String path = "..\\Vendas\\VendasDAO\\Produtos.txt";
             Scanner scan = new Scanner(new File(path));
             List<String> Produtos = new ArrayList<String>();
             while (scan.hasNextLine()) {
@@ -54,7 +54,7 @@ public class ProdutosDAO {
 
     public ArrayList<String> ReadProdutos() {
         try {
-            String path = "..\\VendasDAO\\Produtos.txt";
+            String path = "..\\Vendas\\VendasDAO\\Produtos.txt";
             Scanner scan = new Scanner(new File(path));
             ArrayList<String> Produtos = new ArrayList<String>();
             while (scan.hasNextLine()) {

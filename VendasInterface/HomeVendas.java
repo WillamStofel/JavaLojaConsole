@@ -1,17 +1,20 @@
 package VendasInterface;
 
-import java.util.List;
+import java.util.ArrayList;
+
 import java.util.Scanner;
 
 import VendasBusiness.CadastraCliente;
 import VendasBusiness.CadastraCredenciais;
+import VendasBusiness.CadastraPedido;
+import VendasBusiness.CadastraProdutos;
 
 /**
  * HomeVendas
  */
 public class HomeVendas {
 
-    public void home(List<String> data) {
+    public void home(ArrayList<String> data) {
         Vendas.Clear();
         Scanner scan = new Scanner(System.in);
         String resp = "";
@@ -42,22 +45,24 @@ public class HomeVendas {
                 resp = scan.nextLine();
             } while (resp.compareTo("1") == 0 && resp.compareTo("2") == 0 && resp.compareTo("3") != 0 && resp.compareTo("0") != 0);
         }
-        Menu(resp);
+        Menu(resp,data);
         home(data);
 
     }
 
-    public void Menu(String resp) {
+    public void Menu(String resp,ArrayList<String> credenciais) {
         switch (resp) {
             case "0":
                 System.exit(0);
             case "1":
                 Vendas.Clear();
-                System.out.println("Construção");
+                CadastraProdutos p = new CadastraProdutos();
+                p.CadastroProduto();
                 break;
             case "2":
                 Vendas.Clear();
-                System.out.println("Construção");
+                CadastraPedido pedido = new CadastraPedido();
+                pedido.CadastroPedido(credenciais);
                 break;
             case "3":
                 Vendas.Clear();

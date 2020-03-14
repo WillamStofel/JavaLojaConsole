@@ -1,6 +1,8 @@
 package VendasAttributes;
+
 import java.text.DateFormat;
 import java.util.Calendar;
+
 
 /**
  * PedidoAttributes
@@ -9,7 +11,7 @@ public class PedidoAttributes {
 
     private Integer IdPedido;
     private Integer Quantidade;
-    private Calendar Horario;
+    private DateFormat Horario;
     private DateFormat Date;
 
     public Integer getIdPedido() {
@@ -37,13 +39,7 @@ public class PedidoAttributes {
         }
     }
 
-    public Calendar getHorario() {
-        return Horario;
-    }
-
-    public void setHorario(Calendar horario) {
-        Horario = horario;
-    }
+   
 
     public DateFormat getDate() {
         return Date;
@@ -51,6 +47,16 @@ public class PedidoAttributes {
 
     public void setDate(DateFormat date) {
         Date = date;
+    }
+
+    public DateFormat getHorario() {
+        return Horario;
+    }
+
+    public void setHorario(DateFormat horario) {
+        
+        Horario = horario;
+        
     }
 
 }

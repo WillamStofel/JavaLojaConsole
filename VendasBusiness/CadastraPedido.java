@@ -7,13 +7,13 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
 import VendasAttributes.PedidoAttributes;
-import VendasDAO.ClienteDAO;
 import VendasDAO.PedidosDAO;
 import VendasInterface.PedidoVendas;
 import VendasInterface.Vendas;
@@ -23,9 +23,9 @@ import VendasInterface.Vendas;
  */
 public class CadastraPedido {
     public void CriaArquivo() {
-        Path path = Paths.get("..\\VendasDAO\\Pedidos.txt");
+        Path path = Paths.get("..\\Vendas\\VendasDAO\\Pedidos.txt");
         if (Files.notExists(path)) {
-            File file = new File("..\\VendasDAO\\Pedidos.txt");
+            File file = new File("..\\Vendas\\VendasDAO\\Pedidos.txt");
             try {
                 FileWriter fw = new FileWriter(file);
                 PrintWriter pw = new PrintWriter(fw);
@@ -43,24 +43,33 @@ public class CadastraPedido {
         Vendas.Clear();
         Scanner scan = new Scanner(System.in);
         PedidoAttributes pedidos = new PedidoAttributes();
-        Calendar horario;
-        DateFormat data;
+        DateFormat data,data2;
         Integer IdPedido = 0, Quantidade = 0;
         PedidoVendas Ivendas = new PedidoVendas();
-        Ivendas.Cliente();
-
+        ArrayList<String> cliente = Ivendas.Cliente();
+        ArrayList<String> produto = Ivendas.Produto();
+        
+        try {
+            PedidosDAO p = new PedidosDAO();
+           IdPedido = p.ReadPedidos(); 
+            pedidos.setIdPedido(IdPedido);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         do {
             try {
                 System.out.println("Digite a Quantidade do pedido: ");
                 Quantidade = scan.nextInt();
+                pedidos.setQuantidade(Quantidade);
             } catch (Exception e) {
                 System.out.println("Digite apenas números !");
             }
         } while (pedidos.setQuantidade(Quantidade) == false);
         try {
-            horario.getTime();
+            
             data = DateFormat.getDateInstance(DateFormat.SHORT);
-            pedidos.setHorario(horario);
+             data2 = DateFormat.getDateInstance(DateFormat.HOUR_OF_DAY0_FIELD);
+            pedidos.setHorario(data2);
             pedidos.setDate(data);
 
         } catch (Exception e) {
@@ -69,7 +78,7 @@ public class CadastraPedido {
 
         try {
             PedidosDAO DB = new PedidosDAO();
-            DB.TablePedidos(pedidos, credencias);
+            DB.TablePedidos(pedidos, credencias,cliente,produto);
             System.out.println("Pedido cadastrado com sucesso !!!");
             Thread.sleep(3000);
         } catch (Exception e) {
@@ -77,9 +86,6 @@ public class CadastraPedido {
         }
     }
 
-    public void BuscaInformacoes() {
-        ClienteDAO Clientes = new ClienteDAO();
-        ArrayList<String> C = Clientes.ReadClientes();
-    }
+ 
 
 }

@@ -1,0 +1,15 @@
+celular
+xiaomi
+UN
+900,00
+eletronico
+notebook
+lenovo
+UN
+2300,00
+eletronicos
+mi band 4
+xiaomi
+KG
+130,00
+eletronicos
