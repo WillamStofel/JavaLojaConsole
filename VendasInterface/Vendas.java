@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import VendasBusiness.CadastraCredenciais;
 import VendasDAO.PedidosDAO;
+import VendasDAO.Singleton;
 
 /**
  * Vendas
@@ -21,8 +22,9 @@ public class Vendas {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
+        Singleton.getInstancia().ativar();
         CadastraCredenciais Cadastrar = new CadastraCredenciais();
         Cadastrar.CriaArquivo();
         String answer;
@@ -53,7 +55,7 @@ public class Vendas {
                 break;
 
         }
-
+        Singleton.getInstancia().desativar();
     }
 
     private static void Listapedidos(ArrayList<String> ped) {

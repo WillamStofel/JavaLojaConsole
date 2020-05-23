@@ -3,6 +3,7 @@ package VendasDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,6 +28,9 @@ public class CredentialsDAO {
             fw.flush();
             pw.close();
             fw.close();
+            Singleton.getInstancia().AdicionaMsgAuditoria("Cadastro de Credenciais" + " | " + Instant.now().toString() + " | "
+                    + GA.getName().toString() + " | " + GA.getTipoFuncionario().toString() + " | " + GA.getLogin().toString()
+                    + " | " + GA.getSenha().toString());
         } catch (Exception erro) {
             System.out.println(erro);
         }

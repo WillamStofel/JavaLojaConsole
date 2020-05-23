@@ -3,6 +3,7 @@ package VendasDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,6 +27,9 @@ public class ProdutosDAO {
             fw.flush();
             pw.close();
             fw.close();
+            Singleton.getInstancia().AdicionaMsgAuditoria("Cadastro de Produtos" + " | " + Instant.now().toString() + " | "
+                    + PA.getDescricao().toString() + " | " + PA.getFornecedor().toString() + " | " + PA.getUnidade().toString()
+                    + " | " + PA.getValor().toString() + " | " + PA.getCategoria().toString());
         } catch (Exception erro) {
             System.out.println(erro);
         }

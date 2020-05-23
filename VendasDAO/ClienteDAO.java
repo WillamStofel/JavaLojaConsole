@@ -3,14 +3,12 @@ package VendasDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 import VendasAttributes.ClienteAttributes;
-
 
 /**
  * ClienteDAO
@@ -29,11 +27,13 @@ public class ClienteDAO {
             fw.flush();
             pw.close();
             fw.close();
+            Singleton.getInstancia().AdicionaMsgAuditoria("Cadastro de Cliente" + " | " + Instant.now().toString() + " | "
+                    + CA.getNome().toString() + " | " + CA.getBairro().toString() + " | " + CA.getRua().toString()
+                    + " | " + CA.getCidade().toString() + " | " + CA.getTelefone().toString());
         } catch (Exception erro) {
             System.out.println(erro);
         }
     }
-
 
     public Boolean ReadClientes(String name) {
         try {
@@ -74,7 +74,7 @@ public class ClienteDAO {
         }
         return false;
     }
-    
+
     public ArrayList<String> ReadClientes() {
         try {
             String path = "..\\Vendas\\VendasDAO\\Clientes.txt";
@@ -83,7 +83,7 @@ public class ClienteDAO {
             while (scan.hasNextLine()) {
                 Clientes.add(scan.nextLine());
             }
-           return Clientes;
+            return Clientes;
         } catch (Exception e) {
             System.out.println(e);
         }
